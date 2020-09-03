@@ -11,9 +11,9 @@ import com.example.examapplication.model.Photo
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_photo.view.*
 
-class PhotoAdapter (private val onClick: (Photo) -> Unit) : ListAdapter<Photo, PhotoAdapter.ViewHolder>(
-    DiffCallback()
-) {
+class PhotoAdapter(private val onClick: (Photo) -> Unit) : ListAdapter<Photo, PhotoAdapter.ViewHolder>(
+        DiffCallback()
+    ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_photo, parent, false))
     }
@@ -22,7 +22,7 @@ class PhotoAdapter (private val onClick: (Photo) -> Unit) : ListAdapter<Photo, P
         holder.bind(getItem(position), onClick)
     }
 
-    class ViewHolder(itemsView: View): RecyclerView.ViewHolder(itemsView) {
+    class ViewHolder(itemsView: View) : RecyclerView.ViewHolder(itemsView) {
         fun bind(photo: Photo, onClick: (Photo) -> Unit) {
             with(itemView) {
                 categoryTextView.text = photo.title

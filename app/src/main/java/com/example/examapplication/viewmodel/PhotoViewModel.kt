@@ -17,34 +17,24 @@ class PhotoViewModel(private var repo: PhotoRepository, private var schedulerPro
         get() = _photoListLiveData
 
     fun getListPhoto(){
-        if (_photoListLiveData.value != Outcome.Progress<List<Photo>>(
-                true
-            )
-        ){
+        if (_photoListLiveData.value != Outcome.Progress<List<Photo>>(true)){
             repo.getListPhoto().with(schedulerProvider).subscribe(object : MaybeObserver<List<Photo>> {
-
                 override fun onSuccess(t: List<Photo>) {
-                    this@PhotoViewModel._photoListLiveData.value =
-                        Outcome.Progress(false)
-                    this@PhotoViewModel._photoListLiveData.value =
-                        Outcome.Success(t)
+                    this@PhotoViewModel._photoListLiveData.value = Outcome.Progress(false)
+                    this@PhotoViewModel._photoListLiveData.value = Outcome.Success(t)
                 }
 
                 override fun onComplete() {
-                    this@PhotoViewModel._photoListLiveData.value =
-                        Outcome.Progress(false)
+                    this@PhotoViewModel._photoListLiveData.value = Outcome.Progress(false)
                 }
 
                 override fun onSubscribe(d: Disposable) {
-                    this@PhotoViewModel._photoListLiveData.value =
-                        Outcome.Progress(true)
+                    this@PhotoViewModel._photoListLiveData.value = Outcome.Progress(true)
                 }
 
                 override fun onError(e: Throwable) {
-                    this@PhotoViewModel._photoListLiveData.value =
-                        Outcome.Progress(false)
-                    this@PhotoViewModel._photoListLiveData.value =
-                        Outcome.failure(e)
+                    this@PhotoViewModel._photoListLiveData.value = Outcome.Progress(false)
+                    this@PhotoViewModel._photoListLiveData.value = Outcome.failure(e)
                 }
             })
         }

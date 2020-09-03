@@ -69,4 +69,11 @@ dependencies {
     testImplementation 'androidx.arch.core:core-testing:2.0.0'
     implementation 'com.github.captain-miao:optroundcardview:1.0.0'
     implementation 'com.airbnb.android:lottie:2.8.0'
+
+    //Test for Android
+    androidTestImplementation "com.squareup.okhttp3:mockwebserver:4.8.1"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:3.1.1"
+
+    testImplementation "com.squareup.okhttp3:mockwebserver:4.8.1"
+    testImplementation "io.mockk:mockk:1.9.2"
 }
